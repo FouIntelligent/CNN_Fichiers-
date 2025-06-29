@@ -1,0 +1,24 @@
+id_station;X;Y;Z;nom_commune;nom_quartier;nom_station;date_creation;nom_gerant;effectif_employer
+st21;291103.360;1635042.922;88.424;Thies Ouest;Som/Avenue Camp;Shell transport ;2023-05-01;Ndiaga diagne;13
+st22;291824.415;1634035.500;86.942;Thies Ouest;Parcelle ;Shell ;;Mame oumy Niang ;17
+st23;293759.828;1634838.179;72.419;Thies Ouest;Cite Senghor ;Shell ;2003-11-01;Momar Niang ;15
+st24;294683.829;1634590.886;66.891;Thies Ouest;Hersent ;Serigne Gaye et fils ;;;
+st25;295580.250;1634105.741;61.120;Thies Est ;Nimzatt ;Jah oil;;;
+st26;296451.876;1633662.835;55.745;Thies Est ;Hersent 2 ;Serigne Gaye et fils (SGF);;Ibou Kama;15
+st27;292173.005;1634688.951;83.094;Thies Ouest;Cite Lamy ;Omega petroleum ;;Aicha Niigue;13
+st28;292782.968;1635492.740;76.425;Thies Ouest;Randoulene Nord ;API ;2000-01-04;Beye Diop;14
+st31;289995.401;1635051.016;88.861;Thies Ouest;Grand-standing;EDK;2014-05-27;Mafousse diedhiou;80
+st32;290065.508;1635092.492;88.690;Thies Ouest;Grand-standing;OLA ENERGY;2009-05-01;Sana bodian;0
+st33;290220.085;1635049.919;89.700;Thies Ouest;Zone industrielle ;TotatEnergies;2023-05-01;Absent;0
+st34;291026.171;1635060.044;88.688;Thies Ouest;Cite malick sy;TitanOil;2016-05-01;Seny keita;11
+st35;292748.330;1636775.327;63.396;Thies Nord ;Aiglon;Ola ENERGY ;2023-05-01;Michel;10
+st36;291930.090;1637109.658;64.898;Thies Nord ;Thaly;Alanau Petroleum International;2023-05-02;Absent;
+st37;293121.113;1637449.084;59.340;Thies Nord ;Takhikaw;SGT Keur Cheikh;2023-05-02;Absent ;
+st38;292795.817;1636237.848;66.334;Thies Est ;DVF;Total Energie ;;;
+st39;292262.979;1635866.558;73.393;Thies Nord ;Carriere ;Total Energie ;;;
+st11;289825.893;1635120.744;88.264;Thies Ouest;Thies none;Shell;;;
+st12;289616.772;1635107.504;88.030;Thies Ouest;Grand standing;JAH OIL;2020-08-05;Ibrahima wane;11
+st13;289409.928;1635164.154;87.140;Thies Ouest;Thies none;S.F.G;;;
+st14;288363.841;1635324.533;83.230;Thies Ouest;Thies none ;ELTON ;2023-05-02;Abibou tine;23
+st15;288318.563;1635270.050;83.788;Thies Ouest;Thies none ;MKA excellence ;2022-12-05;Pathe djongue;10
+st16;290074.366;1632732.814;98.741;Thies Ouest;Mbour 3;Touba OIL;;Mamadou sarr;5

@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>Ma première carte leaflet</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./leaflet/leaflet.css"/>
+<link rel="stylesheet" href="./leaflet/control/src/leaflet.groupedlayercontrol.css" />
+
+<script src="./leaflet/leaflet.js"></script>
+
+ <script src="./leaflet/control/src/leaflet.groupedlayercontrol.js"></script>
+<style>
+#map {width: 70%; height:600px; margin: auto; }
+</style>
+
+</head>
+
+<body>
+
+<div id="map"></div>
+<script src="./jquery-3.6.3.min.js"></script>
+
+<script>
+(function() {
+
+  var basemaps = {
+    Grayscale: L.tileLayer('https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }),
+    Streets: L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    })
+  };
+
+
+  //L.marker([39.61, -105.02]).bindPopup('Littleton, CO.').addTo(groups.cities);
+  
+
+  window.ExampleData = {
+    Basemaps: basemaps
+  };
+
+}());
+
+
+var point=L.featureGroup();
+var commune=L.featureGroup();
+
+// Initialiser la carte
+var map = L.map('map', {
+center: [14, -14],
+zoom: 7
+});
+
+point.addTo(map);
+commune.addTo(map);
+
+L.control.groupedLayers(ExampleData.Basemaps).addTo(map);
+
+L.control.scale().addTo(map);
+
+L.marker([14, -14]).bindPopup("Parc niokolo").bindTooltip("Niokol").addTo(point);
+point.clearLayers();
+
+var iconeparc = L.icon({
+iconUrl: 'parc.png',
+iconSize: [30, 30] });
+
+//L.marker([14.789, -14.12065],{icon: iconeparc}).bindPopup("Parc 1").bindTooltip("P2").addTo(point);
+
+var defaultStyle = {
+        "color": "black",
+        "weight": 2,
+        "opacity": 0.9,
+	    "fillOpacity": 1,
+		"fillColor":"white"
+        };
+		
+		var symbologie2 = {
+        "color": "black",
+        "weight": 4,
+		"fillColor":"blue"
+        };
+
+
+var onEachFeature = function(feature, layer) {
+	
+	layer.setStyle(defaultStyle);
+	
+    // Create a self-invoking function that passes in the layer
+    // and the properties associated with this particular record.
+    (function(layer, properties) {
+		
+      // Create a mouseover event
+      layer.on("mouseover", function (e) {
+        // Change the style to the highlighted version
+        layer.setStyle(symbologie2);
+        // Create a popup with a unique ID linked to this record
+       
+        // Insert a headline into that popup
+       
+      
+      });
+      // Create a mouseout event that undoes the mouseover changes
+      layer.on("mouseout", function (e) {
+        // Start by reverting the style back
+       layer.setStyle(defaultStyle);
+        // And then destroying the popup
+     
+      });
+
+   
+      layer.on("mouseup", function (e) {
+       
+        alert("Quartier: "+feature.properties.qrt+"Département! "+feature.properties.nom_reg);
+       //feature.properties
+        
+       
+      });
+
+      
+	
+    })(layer, feature.properties);
+	
+};
+
+function afficher_carte(arg)
+{
+
+$.ajax({
+				url:'php/postgis_geojson.php?id='+arg,
+				type: 'GET',
+				"content-type": "application/json",
+    		    "cache-control": "no-cache",
+				success: function (result) {
+					commune.clearLayers();
+                L.geoJSON(result,{
+				onEachFeature:onEachFeature
+				
+				}
+				).addTo(commune).bindTooltip(function (layer,lat)
+				{
+				return "Quartier:"+layer.feature.properties.qrt;
+				}
+				
+				);
+				map.fitBounds(commune.getBounds());
+				},
+				error: function (data) {
+				 alert("Attention il y'a des erreurs");
+				}
+		});
+
+}
+
+afficher_carte("*");
+
+
+
+</script>
+
+<form>
+
+<select onchange="afficher_carte(this.value)">
+
+<option value="*">Sélectionner</option>
+<option value="1">DAROU MISSETTE CENTRE I</option>
+<option value="2">DAROU MISSETTE KANEL</option>
+<option value="3">MEDINA KELLE</option>
+<option value="4">PARCELLES ASSAINIES UNITE V</option>
+</select>
+</form>
+
+
+</body>
+</html>
